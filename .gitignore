@@ -1,5 +1,9 @@
+
 *.elf
 *.d
 *.o
 *.cyclo
 *.su
+*.map
+*.list
+

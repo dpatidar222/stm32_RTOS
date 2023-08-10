@@ -12,14 +12,14 @@
 #include "queue.h"
 
 extern QueueHandle_t xQueue_serial_com_tx;
-extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart1;
 
 void task_serial_com(void * pvParameters){
 	BaseType_t status;
-	uint8_t data;
+	uint8_t data[10] = {0};
 	while(1){
-		status = xQueueReceive( xQueue_serial_com_tx, &data, 1 );
-		if(status == pdPASS) HAL_UART_Transmit_IT(&huart2, &data, 1);
+		status = xQueueReceive( xQueue_serial_com_tx, data, 1 );
+		if(status == pdPASS) HAL_UART_Transmit_IT(&huart1, data, 10);
 	}
 
 }

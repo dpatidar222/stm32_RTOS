@@ -16,6 +16,7 @@ RM := rm -rf
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include Core/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -64,8 +65,8 @@ all: main-build
 main-build: STN32f4.elf secondary-outputs
 
 # Tool invocations
-STN32f4.elf STN32f4.map: $(OBJS) $(USER_OBJS) /home/deepakp/STM32CubeIDE/workspace_1.13.1/STN32f4/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "STN32f4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/deepakp/STM32CubeIDE/workspace_1.13.1/STN32f4/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STN32f4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+STN32f4.elf STN32f4.map: $(OBJS) $(USER_OBJS) /home/deepakp/Embedded/ptc/stm32_RTOS/STN32f4/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "STN32f4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/deepakp/Embedded/ptc/stm32_RTOS/STN32f4/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STN32f4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

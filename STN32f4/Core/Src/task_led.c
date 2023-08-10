@@ -8,13 +8,18 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "task_led.h"
+#include "queue.h"
+
+extern QueueHandle_t xQueue_serial_com_tx;
 
 void led_task(void * pvParameters){
 
 	while(1){
 		LED(ON);
+		xQueueSend(xQueue_serial_com_tx, "LED ON\n\r", 1 );
 		vTaskDelay( 1000 );
 		LED(OFF);
+		xQueueSend(xQueue_serial_com_tx, "LED OFF\n\r", 1 );
 		vTaskDelay( 1000 );
 	}
 
