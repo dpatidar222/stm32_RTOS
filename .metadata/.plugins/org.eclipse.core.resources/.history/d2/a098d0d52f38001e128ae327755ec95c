@@ -1,0 +1,43 @@
+/*
+ * task_button.c
+ *
+ *  Created on: Aug 11, 2023
+ *      Author: deepakp
+ */
+#include "main.h"
+#include "stm32f4xx_hal_gpio.h"
+extern QueueHandle_t xQueue_serial_com_tx;
+
+void task_button (void * pvParameter){
+
+
+
+}
+
+/**
+  * @brief  EXTI line detection callbacks.
+  * @param  GPIO_Pin Specifies the pins connected EXTI line
+  * @retval None
+  */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	static uint8_t count;
+	GPIO_PinState bitstatus;
+	if(GPIO_Pin == GPIO_PIN_13){
+
+		bitstatus = HAL_GPIO_ReadPin(TMS_GPIO_Port, GPIO_PIN_13);
+
+		  if( bitstatus == GPIO_PIN_SET){
+			  count++;
+			  xQueueSend(xQueue_serial_com_tx, count , 1 );;
+		  }
+
+	}else{
+
+	}
+
+}
+
+/**
+  * @}
+  */

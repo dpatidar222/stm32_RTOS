@@ -1,0 +1,10 @@
+16:21:43 **** Incremental Build of configuration Debug for project STN32f4 ****
+make -j4 all 
+arm-none-eabi-size   STN32f4.elf 
+   text	   data	    bss	    dec	    hex	filename
+  24192	    104	  20960	  45256	   b0c8	STN32f4.elf
+Finished building: default.size.stdout
+ 
+
+16:21:43 Build Finished. 0 errors, 0 warnings. (took 638ms)
+

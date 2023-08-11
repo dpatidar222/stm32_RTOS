@@ -6,6 +6,7 @@
 "./Core/Src/syscalls.o"
 "./Core/Src/sysmem.o"
 "./Core/Src/system_stm32f4xx.o"
+"./Core/Src/task_button.o"
 "./Core/Src/task_led.o"
 "./Core/Src/task_serial_com.o"
 "./Core/Startup/startup_stm32f401retx.o"
